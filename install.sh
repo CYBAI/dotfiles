@@ -17,9 +17,6 @@ done
 
 # anyenv
 git clone https://github.com/riywo/anyenv ~/.anyenv
-export PATH=$HOME/.anyenv/bin:$PATH
-eval "$(anyenv init -)"
-exec $SHELL -l
 anyenv install rbenv
 anyenv install pyenv
 anyenv install ndenv

@@ -52,7 +52,10 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="/home/cyb/.pyenv/shims:/home/cyb/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-# export MANPATH="/usr/local/man:$MANPATH"
+# anyenv path
+export PATH="$HOME/.anyenv/bin:$PATH"# export MANPATH="/usr/local/man:$MANPATH"
+
+eval "$(anyenv init)"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -82,3 +85,5 @@ export PATH="/home/cyb/.pyenv/shims:/home/cyb/.pyenv/bin:/usr/local/sbin:/usr/lo
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ll="ls -al"
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
