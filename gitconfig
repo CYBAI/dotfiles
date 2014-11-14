@@ -1,0 +1,6 @@
+[user]
+	email = cyb.ai.815@gmail.com
+	name = CYBAI
+[alias]
+	show-graph = log --graph --abbrev-commit --pretty=oneline
+	s = status -s
