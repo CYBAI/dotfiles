@@ -4,7 +4,7 @@
 git clone https://github.com/CYBAI/dotfiles.git ~/.dotfiles
 
 # install zsh
-curl -L http://install.ohmyz.sh | sh
+curl -sSL http://install.ohmyz.sh | sh
 
 dotdir=~/.dotfiles
 files="bashrc vimrc vim zshrc oh-my-zsh" # list of files/folders to symlink in homedir
