@@ -15,5 +15,32 @@ for file in $files; do
     ln -sfv $dotdir/$file ~/.$file
 done
 
-echo "Done!"
+# anyenv
+git clone https://github.com/riywo/anyenv ~/.anyenv
+export PATH=$HOME/.anyenv/bin:$PATH
+eval "$(anyenv init -)"
+exec $SHELL -l
+anyenv install rbenv
+anyenv install pyenv
+anyenv install ndenv
+anyenv install goenv
+anyenv install phpenv
+
+# node.js
+ndenv install 0.10.33
+ndenv global 0.10.33
+npm install -g bower coffee-script coffeelint csslint jshint gulp hexo lodash leven node-emoji node-inspector
+
+# ruby
+rbenv install 2.1.5
+rbenv global 2.1.5
+
+# php
+phpenv install 5.6.2
+phpenv global 5.6.2
+
+# vim
+sudo apt-get install vim
+
+echo "Install dotfiles DONE!"
 exit
