@@ -55,7 +55,7 @@ export PATH="/home/cyb/.pyenv/shims:/home/cyb/.pyenv/bin:/usr/local/sbin:/usr/lo
 # anyenv path
 export PATH="$HOME/.anyenv/bin:$PATH"# export MANPATH="/usr/local/man:$MANPATH"
 
-eval "$(anyenv init)"
+eval "$(anyenv init -)"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
