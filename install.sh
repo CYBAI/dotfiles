@@ -37,7 +37,7 @@ phpenv install 5.6.2
 phpenv global 5.6.2
 
 # vim
-sudo apt-get install vim
+sudo apt-get install vim -y
 
 echo "Install dotfiles DONE!"
 exit
