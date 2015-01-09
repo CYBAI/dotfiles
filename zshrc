@@ -54,6 +54,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/home/cyb/.pyenv/shims:/home/cyb/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # anyenv path
 export PATH="$HOME/.anyenv/bin:$PATH"# export MANPATH="/usr/local/man:$MANPATH"
+# android sdk
+export PATH="$PATH:/home/cyb/adt-bundle-linux/sdk/tools:/home/cyb/adt-bundle-linux/platform-tools"
 
 eval "$(anyenv init -)"
 
@@ -84,6 +86,36 @@ eval "$(anyenv init -)"
 
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias l="ls -CF"
 alias ll="ls -al"
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+export GOPATH=$HOME/gocode
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+if [ -d "$HOME/.node-webkit" ]; then
+  PATH="$PATH:$HOME/.node-webkit"
+fi
+
+# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
+export COCOS_CONSOLE_ROOT=/home/cyb/Documents/han-project/cocos2d-x-3.3/tools/cocos2d-console/bin
+export PATH=$COCOS_CONSOLE_ROOT:$PATH
+
+# Add environment variable COCOS_X_ROOT for cocos2d-x
+export COCOS_X_ROOT=/home/cyb/Documents/han-project/cocos2d-x-3.3
+export PATH=$COCOS_X_ROOT:$PATH
+
+# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
+export COCOS_TEMPLATES_ROOT=/home/cyb/Documents/han-project/cocos2d-x-3.3/templates
+export PATH=$COCOS_TEMPLATES_ROOT:$PATH
+
+# Add environment variable ANDROID_SDK_ROOT for cocos2d-x
+export ANDROID_SDK_ROOT=/home/cyb/adt-bundle-linux/sdk
+export PATH=$ANDROID_SDK_ROOT:$PATH
+export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+
+# Add environment variable ANT_ROOT for cocos2d-x
+export ANT_ROOT=/usr/share/ant/bin
+export PATH=$ANT_ROOT:$PATH
