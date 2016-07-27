@@ -4,3 +4,6 @@
 [alias]
 	show-graph = log --graph --abbrev-commit --pretty=oneline
 	s = status -s
+[core]
+  autocrlf = input
+  editor = /usr/bin/vim

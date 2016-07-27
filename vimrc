@@ -7,6 +7,9 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
+" Fix backspace not working
+set backspace=indent,eol,start
+
 " Line number
 set number
 
@@ -48,6 +51,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'jelera/vim-javascript-syntax'
 " Nerd tree
 Plugin 'scrooloose/nerdtree'
+" Ruby Syntax Highlight
+Plugin 'vim-ruby/vim-ruby'
 " neocomplete {{{
 Plugin 'Shougo/neocomplete'
 " settings

@@ -1,14 +1,22 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="steeef"
+ZSH_THEME="lambda-mod"
+# ZSH_THEME="honukai"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -45,19 +53,14 @@ ZSH_THEME="steeef"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
+plugins=(git docker)
 
 # User configuration
 
-export PATH="/home/cyb/.pyenv/shims:/home/cyb/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-# anyenv path
-export PATH="$HOME/.anyenv/bin:$PATH"# export MANPATH="/usr/local/man:$MANPATH"
-# android sdk
-export PATH="$PATH:/home/cyb/adt-bundle-linux/sdk/tools:/home/cyb/adt-bundle-linux/platform-tools"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export MANPATH="/usr/local/man:$MANPATH"
 
-eval "$(anyenv init -)"
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -79,43 +82,51 @@ eval "$(anyenv init -)"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias mysql=/usr/local/mysql/bin/mysql
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+alias mysqldump=/usr/local/mysql/bin/mysqldump
+alias git=hub
 
-# -------------------------------------------------------------
-# Aliases
-# -------------------------------------------------------------
+# Activate NVM
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
 
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias l="ls -CF"
-alias ll="ls -al"
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-export GOPATH=$HOME/gocode
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+# Add `depot_tools` to PATH
+export DEPOT_TOOLS_PATH="$HOME/depot_tools"
+export PATH="$PATH:$DEPOT_TOOLS_PATH"
 
-if [ -d "$HOME/.node-webkit" ]; then
-  PATH="$PATH:$HOME/.node-webkit"
-fi
+# Default `cd` action for rui_service
+cd () {
+  builtin cd $@ && checkRUIVersion
+}
 
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/home/cyb/Documents/han-project/cocos2d-x-3.3/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
+checkRUIVersion () {
+  if [[ `pwd` == *"rui_repo"* ]]
+  then
+    if [[ `pwd` == *"_v2"* ]]
+    then
+      if [[ `node -v` != *"6.0"* ]]
+      then
+        nvm use 6.0.0
+      fi
+    else
+      if [[ `node -v` != *"0.10.36"* ]]
+      then
+        nvm use 0.10.36
+      fi
+    fi
+  else
+    if [[ `node -v` != *"6.0"* ]]
+    then
+      nvm use 6.0.0
+    fi
+  fi
+}
 
-# Add environment variable COCOS_X_ROOT for cocos2d-x
-export COCOS_X_ROOT=/home/cyb/Documents/han-project/cocos2d-x-3.3
-export PATH=$COCOS_X_ROOT:$PATH
 
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=/home/cyb/Documents/han-project/cocos2d-x-3.3/templates
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
-
-# Add environment variable ANDROID_SDK_ROOT for cocos2d-x
-export ANDROID_SDK_ROOT=/home/cyb/adt-bundle-linux/sdk
-export PATH=$ANDROID_SDK_ROOT:$PATH
-export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
-
-# Add environment variable ANT_ROOT for cocos2d-x
-export ANT_ROOT=/usr/share/ant/bin
-export PATH=$ANT_ROOT:$PATH
+# Define MySQL Docker IP
+# export DOCKER_MYSQL_HOST=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ruiservicev2_mysql_1)
