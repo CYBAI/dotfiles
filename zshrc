@@ -105,23 +105,24 @@ cd () {
 }
 
 checkRUIVersion () {
-  if [[ `pwd` == *"rui_repo"* ]]
-  then
-    if [[ `pwd` == *"_v2"* ]]
-    then
-      if [[ `node -v` != *"6.0"* ]]
-      then
+  curDir=${PWD##*/}
+  parentDirFull="$(dirname $PWD)"
+  parentDir=${parentDirFull##*/}
+  ruiRe=^rui_?.+$
+  ruiV2Re=^(rui_)?.+v2(_mobile)?$
+
+  if [ "$curDir" =~ $ruiRe ] || [ "$parentDir" =~ $ruiRe ] ; then
+    if [ "$curDir" =~ $ruiV2Re ] ; then
+      if [[ `node -v` != *"6.0"* ]] ; then
         nvm use 6.0.0
       fi
     else
-      if [[ `node -v` != *"0.10.36"* ]]
-      then
+      if [[ `node -v` != *"0.10.36"* ]] ; then
         nvm use 0.10.36
       fi
     fi
   else
-    if [[ `node -v` != *"6.0"* ]]
-    then
+    if [[ `node -v` != *"6.0"* ]] ; then
       nvm use 6.0.0
     fi
   fi
