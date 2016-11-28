@@ -39,7 +39,7 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -51,17 +51,51 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'jelera/vim-javascript-syntax'
 " Nerd tree
 Plugin 'scrooloose/nerdtree'
+
 " Ruby Syntax Highlight
 Plugin 'vim-ruby/vim-ruby'
+" Rails plugin
+Plugin 'tpope/vim-rails'
+" Endwise for Ruby
+Plugin 'tpope/vim-endwise'
+
+" Tagbar
+Plugin 'majutsushi/tagbar'
+let g:tagbar_ctags_bin='ctags'
+let g:tagbar_width=30
+map <F3> :Tagbar<CR>
+
+" vim markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" TOML syntax
+Plugin 'cespare/vim-toml'
+
+" Rust syntax highlight
+Plugin 'rust-lang/rust.vim'
+
+" Vue Component syntax highlight
+Plugin 'posva/vim-vue'
+
+" Interactive command execution in Vim
+Plugin 'Shougo/vimproc.vim'
+
 " neocomplete {{{
 Plugin 'Shougo/neocomplete'
-" settings
+" neocomplete settins
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-
 let g:neocomplete#min_keyword_length = 3
+
+" Settings of RSense
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -109,41 +143,17 @@ autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
 
 " }}}
 
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
 syntax enable
 filetype plugin indent on    " required
 
-" Setting Move up/down one line with CR+up/down {{{
-function! s:swap_lines(n1, n2)
-  let line1 = getline(a:n1)
-  let line2 = getline(a:n2)
-  call setline(a:n1, line2)
-  call setline(a:n2, line1)
-endfunction
-
-function! s:swap_up()
-  let n = line('.')
-  if n == 1
-    return
-  endif
-
-  call s:swap_lines(n, n - 1)
-  exec n - 1
-endfunction
-
-function! s:swap_down()
-  let n = line('.')
-  if n == line('$')
-    return
-  endif
-
-  call s:swap_lines(n, n + 1)
-  exec n + 1
-endfunction
-
-noremap <silent> <C-S-Up> :call <SID>swap_up()<CR>
-noremap <silent> <C-S-Down> :call <SID>swap_down()<CR>
-" }}}
-
+" Settings of gtags
+map <C-g> :Gtags
+map <C-h> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
+map <C-n> :cn<CR>
+map <C-b> :cp<CR>
