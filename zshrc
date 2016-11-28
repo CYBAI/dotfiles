@@ -86,18 +86,40 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# mysql
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias mysqldump=/usr/local/mysql/bin/mysqldump
+alias curl=/usr/local/opt/curl/bin/curl
+
 alias git=hub
+
+alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+
+# v8
+alias d8="$HOME/Documents/cybai/v8/out/x64.debug/d8"
+alias tick-processor="$HOME/Documents/cybai/v8/tools/mac-tick-processor"
 
 # Activate NVM
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+source "$(brew --prefix nvm)/nvm.sh"
+
+# Editor env for Hyperterm
+export EDITOR="vim"
 
 # Add `depot_tools` to PATH
 export DEPOT_TOOLS_PATH="$HOME/depot_tools"
 export PATH="$PATH:$DEPOT_TOOLS_PATH"
+
+# cargo bin
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# Setup yarn
+export PATH="$PATH:$HOME/.yarn/bin"
+
+# Setup for chromedriver
+export PATH="$PATH:$HOME/.bin"
 
 # Default `cd` action for rui_service
 cd () {
@@ -111,7 +133,7 @@ checkRUIVersion () {
   ruiRe=^rui_?.+$
   ruiV2Re=^(rui_)?.+v2(_mobile)?$
 
-  if [ "$curDir" =~ $ruiRe ] || [ "$parentDir" =~ $ruiRe ] ; then
+  if [ "$curDir" =~ $ruiRe ] || [ "$parentDir" =~ $ruiRe ] ; then  
     if [ "$curDir" =~ $ruiV2Re ] ; then
       if [[ `node -v` != *"6.0"* ]] ; then
         nvm use 6.0.0
@@ -131,3 +153,4 @@ checkRUIVersion () {
 
 # Define MySQL Docker IP
 # export DOCKER_MYSQL_HOST=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ruiservicev2_mysql_1)
+
