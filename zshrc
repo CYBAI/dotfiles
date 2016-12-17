@@ -57,7 +57,7 @@ plugins=(git docker)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/cybai/gocode/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -93,12 +93,12 @@ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias mysqldump=/usr/local/mysql/bin/mysqldump
 alias curl=/usr/local/opt/curl/bin/curl
 
-alias git=hub
+# alias git=hub
 
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 
 # v8
-alias d8="$HOME/Documents/cybai/v8/out/x64.debug/d8"
+alias d8="$HOME/Documents/cybai/v8/out.gn/x64.release/d8"
 alias tick-processor="$HOME/Documents/cybai/v8/tools/mac-tick-processor"
 
 # Activate NVM
@@ -154,3 +154,11 @@ checkRUIVersion () {
 # Define MySQL Docker IP
 # export DOCKER_MYSQL_HOST=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ruiservicev2_mysql_1)
 
+# Activate rbenv
+eval "$(rbenv init -)"
+
+# Activate goenv
+if which goenv > /dev/null; then eval "$(goenv init -)"; fi
+export GOPATH="$HOME/Documents/cybai/gocode"
+
+export PATH="$PATH:$GOPATH/src/github.com/huydx/hget/bin"
