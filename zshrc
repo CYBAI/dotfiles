@@ -97,9 +97,16 @@ alias curl=/usr/local/opt/curl/bin/curl
 
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 
+export CHROMIUM_SRC="$HOME/Documents/cybai/chromium/src"
+
+alias chromium="$CHROMIUM_SRC/out.gn/x64.release/Chromium.app/Contents/MacOS/Chromium"
+
 # v8
-alias d8="$HOME/Documents/cybai/v8/out.gn/x64.release/d8"
+alias d8="$CHROMIUM_SRC/out.gn/x64.release/d8"
 alias tick-processor="$HOME/Documents/cybai/v8/tools/mac-tick-processor"
+alias hydra-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --user-data-dir=$HOME/Documents/hydra --no-sandbox --js-flags=\"--trace-turbo --trace-phase=Z --trace-deopt --code-comments --hydrogen-track-positions --redirect-code-traces\""
+alias hydra="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-sandbox --user-data-dir=$HOME/Documents/hydra --js-flags=\"--trace-hydrogen --trace-phase=Z --trace-deopt --code-comments --hydrogen-track-positions --redirect-code-traces\""
+
 
 # Activate NVM
 export NVM_DIR="$HOME/.nvm"
@@ -135,8 +142,8 @@ checkRUIVersion () {
 
   if [ "$curDir" =~ $ruiRe ] || [ "$parentDir" =~ $ruiRe ] ; then  
     if [ "$curDir" =~ $ruiV2Re ] ; then
-      if [[ `node -v` != *"6.0"* ]] ; then
-        nvm use 6.0.0
+      if [[ `node -v` != *"6.10.1"* ]] ; then
+        nvm use 6.10.1
       fi
     else
       if [[ `node -v` != *"0.10.36"* ]] ; then
@@ -144,8 +151,8 @@ checkRUIVersion () {
       fi
     fi
   else
-    if [[ `node -v` != *"6.0"* ]] ; then
-      nvm use 6.0.0
+    if [[ `node -v` != *"6.10.1"* ]] ; then
+      nvm use 6.10.1
     fi
   fi
 }
