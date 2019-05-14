@@ -39,3 +39,8 @@ eval "$(rbenv init -)"
 
 # Activate goenv
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
+
+# Setup for Servo
+export PKG_CONFIG_PATH=$(brew --prefix libffi)/lib/pkgconfig
+
+source $HOME/.dotfiles/herprc
