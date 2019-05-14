@@ -38,53 +38,25 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
-" Install JavaScript Syntax
-Plugin 'jelera/vim-javascript-syntax'
+
 " Nerd tree
 Plugin 'scrooloose/nerdtree'
 
-" Ruby Syntax Highlight
-Plugin 'vim-ruby/vim-ruby'
-" Rails plugin
-Plugin 'tpope/vim-rails'
 " Endwise for Ruby
 Plugin 'tpope/vim-endwise'
-" Slim Syntax Highlight
-Plugin 'slim-template/vim-slim'
+
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'gregsexton/MatchTag'
 
 " Tagbar
 Plugin 'majutsushi/tagbar'
 let g:tagbar_ctags_bin='ctags'
 let g:tagbar_width=30
 map <F3> :Tagbar<CR>
-
-" vim markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-
-" TOML syntax
-Plugin 'cespare/vim-toml'
-
-" Rust syntax highlight
-Plugin 'rust-lang/rust.vim'
-
-" Vue Component syntax highlight
-Plugin 'posva/vim-vue'
 
 " Interactive command execution in Vim
 Plugin 'Shougo/vimproc.vim'
@@ -135,28 +107,14 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " }}}
 
-" Go Syntax Highlight {{{
-Plugin 'fatih/vim-go'
-let g:go_disable_autoinstall = 0
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-" }}}
-
-" CoffeeScript Syntax Highlight {{{
-Plugin 'kchmck/vim-coffee-script'
-
-au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
-autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
-
-" }}}
-
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-" Enable ESLint with vim {{{
+"""""""""""""""
+"   Linters   "
+"""""""""""""""
 Plugin 'vim-syntastic/syntastic'
 
 set statusline+=%#warningmsg#
@@ -169,28 +127,22 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ruby_checkers = ['rubocop']
-
+let g:syntastic_haskell_checkers = ['hlint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'eslint'
 
-" }}}
+""""""""""""""""""""""""
+"   Syntax Highlight   "
+""""""""""""""""""""""""
 
-" Multiple cursor like sublime
-Plugin 'terryma/vim-multiple-cursors'
-
-Plugin 'tpope/vim-unimpaired'
-
-" Comment commands
-Plugin 'tpope/vim-commentary'
-
-" Change quotes effeciently
-Plugin 'tpope/vim-surround'
-
-" GraphQL syntax highlight
 Plugin 'jparise/vim-graphql'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'cespare/vim-toml'
+Plugin 'rust-lang/rust.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'vim-ruby/vim-ruby'
 
-" HTML 
-Plugin 'gregsexton/MatchTag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
