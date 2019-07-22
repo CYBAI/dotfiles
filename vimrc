@@ -135,14 +135,12 @@ let g:syntastic_javascript_eslint_exe = 'eslint'
 "   Syntax Highlight   "
 """"""""""""""""""""""""
 
-Plugin 'jparise/vim-graphql'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'cespare/vim-toml'
-Plugin 'rust-lang/rust.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'vim-ruby/vim-ruby'
+Plugin 'sheerun/vim-polyglot'
 
+" setup TS compiler
+
+autocmd FileType typescript :set makeprg=tsc
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
