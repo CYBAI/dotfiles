@@ -3,7 +3,7 @@
 # Install brew package
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew_installs="gdbm hub openssl sqlite zsh gettext libevent pcre tmux zsh-completions ghc libffi postgresql vim git lua python3 wget glib nvm readline xz"
+brew_installs="openssl zsh tmux zsh-completions ghc libffi postgresql vim git lua python3 wget"
 for brew_install in $brew_installs; do
   echo "Brew install $brew_install"
   brew install $brew_install
@@ -15,9 +15,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # Install theme `lambda-mod`
 wget "https://raw.githubusercontent.com/halfo/lambda-mod-zsh-theme/master/lambda-mod.zsh-theme" > ~/.oh-my-zsh/themes/lambda-mod.zsh-theme
 
-# Install iTerm2
-brew cask install iterm2
-
 # Link config files
 DOTDIR=~/.dotfiles
 files="vimrc vim zshrc oh-my-zsh" # list of files/folders to symlink in homedir
@@ -28,4 +25,4 @@ for file in $files; do
   ln -sfv $DOTDIR/$file ~/.$file
 done
 
-echo "Remember to install Docker, MySQL, GitX, Sequal Pro, Chrome, Chrome Canary, FireFox, Atom, Sublime Text"
+echo "Remember to install Docker, Chrome, Chrome Canary, FireFox, Atom, Sublime Text"
